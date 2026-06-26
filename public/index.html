@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>📱 Telegram Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ЭКРАН РЕГИСТРАЦИИ -->
+  <div id="registerScreen" class="register-screen">
+    <div class="register-card">
+      <div class="register-logo">📱</div>
+      <h1>Telegram</h1>
+      <p>Введите ваше имя и выберите аватар</p>
+      
+      <div class="avatar-selector">
+        <div class="avatar-option" data-avatar="👤">👤</div>
+        <div class="avatar-option" data-avatar="😊">😊</div>
+        <div class="avatar-option" data-avatar="😎">😎</div>
+        <div class="avatar-option" data-avatar="🤩">🤩</div>
+        <div class="avatar-option" data-avatar="🐱">🐱</div>
+        <div class="avatar-option" data-avatar="🚀">🚀</div>
+        <div class="avatar-option" data-avatar="💪">💪</div>
+        <div class="avatar-option" data-avatar="🎨">🎨</div>
+      </div>
+      
+      <input type="text" id="registerInput" placeholder="Ваше имя..." maxlength="30" autofocus>
+      <button id="registerButton">Войти в чат</button>
+      <div class="register-error" id="registerError"></div>
+    </div>
+  </div>
+
+  <!-- ОСНОВНОЙ ЧАТ -->
+  <div id="chatScreen" class="chat-screen" style="display:none">
+    
+    <!-- Левая панель - список пользователей -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>💬 Чаты</h2>
+        <button id="logoutButton" class="logout-btn">🚪</button>
+      </div>
+      
+      <div class="sidebar-search">
+        <input type="text" id="searchInput" placeholder="Поиск..." />
+      </div>
+      
+      <div class="users-list" id="usersList">
+        <div class="user-item">
+          <div class="user-avatar">👤</div>
+          <div class="user-info">
+            <div class="user-name">Загрузка...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая панель - чат -->
+    <div class="chat-main">
+      
+      <!-- Шапка чата -->
+      <header class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-header-avatar">💬</div>
+          <div>
+            <div class="chat-header-title">Общий чат</div>
+            <div class="chat-header-online" id="onlineCount">🟢 0 в сети</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Статус "печатает" -->
+      <div id="typingStatus" class="typing-status"></div>
+
+      <!-- Сообщения -->
+      <div class="messages" id="messagesContainer">
+        <div class="welcome">👋 Добро пожаловать в чат!</div>
+      </div>
+
+      <!-- Панель ввода -->
+      <div class="input-area">
+        <button id="attachButton" class="attach-btn">📎</button>
+        <input type="text" id="messageInput" placeholder="Сообщение..." />
+        <button id="sendButton" class="send-btn">➤</button>
+      </div>
+
+      <!-- Скрытый input для файлов -->
+      <input type="file" id="fileInput" accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip,.rar" style="display:none" multiple>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
